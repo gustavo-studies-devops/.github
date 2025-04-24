@@ -1,6 +1,7 @@
 name: Github workflow to test
 
 on:
+  workflow_call:
   push:
     branches: [ $default-branch ]
   pull_request:
