@@ -10,15 +10,19 @@ jobs:
     steps:
         - name: Checkout branch 
           uses: actions/checkout@v4
-
-        - name: Dir
-          run: pwd && ls -la
-          shell: bash
         
         - name: Setup node in the host
           uses: actions/setup-node@v4
           with:
            node-version: 22.x
+
+        - name: Entrying in src directory
+          run: cd ./src
+          shell: bash
+
+        - name: Install application dependecies
+          run: npm ci
+          shell: bash
 
         - name: Running the application tests 
           uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
