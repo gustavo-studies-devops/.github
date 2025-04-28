@@ -14,7 +14,7 @@ jobs:
            node-version: 22.x
 
         - name: Running the application tests
-          uses: ./actions/tests.yaml
+          uses: ./actions/tests/action.yaml
   build:
     runs-on: ubuntu-latest
 
