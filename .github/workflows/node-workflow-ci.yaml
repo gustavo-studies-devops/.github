@@ -16,12 +16,8 @@ jobs:
           with:
            node-version: 22.x
 
-        - name: Entrying in src directory
-          run: cd ./src
-          shell: bash
-
         - name: Install application dependecies
-          run: npm install
+          run: cd src/ && npm install
           shell: bash
 
         - name: Running the application tests 
