@@ -10,6 +10,10 @@ jobs:
     steps:
         - name: Checkout branch 
           uses: actions/checkout@v4
+
+        - name: Dir
+          run: ls -la
+          shell: bash
         
         - name: Setup node in the host
           uses: actions/setup-node@v4
