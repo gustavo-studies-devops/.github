@@ -21,7 +21,7 @@ jobs:
           shell: bash
 
         - name: Install application dependecies
-          run: npm ci
+          run: npm install
           shell: bash
 
         - name: Running the application tests 
