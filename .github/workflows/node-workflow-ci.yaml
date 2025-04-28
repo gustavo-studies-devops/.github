@@ -1,0 +1,15 @@
+name: Node workflow CI
+description: This workflow is used to a Node.js projects
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello from gustavo-studies organization
