@@ -21,7 +21,7 @@ jobs:
            node-version: 22.x
 
         - name: Running the application tests 
-          uses: .github/actions/tests/
+          uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
   build:
     runs-on: ubuntu-latest
     needs: test
