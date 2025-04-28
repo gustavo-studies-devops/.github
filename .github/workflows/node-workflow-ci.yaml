@@ -5,6 +5,16 @@ on:
   workflow_call:
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+           node-version: 22.x
+
+        - name: Running the application tests
+          uses: ./actions/tests.yaml
   build:
     runs-on: ubuntu-latest
 

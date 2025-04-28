@@ -1,0 +1,9 @@
+name: Application tests
+description: Action to running the application tests
+
+runs:
+  using: "composite"
+  steps:
+    name: Node version
+    run: node --version
+    shell: bash
