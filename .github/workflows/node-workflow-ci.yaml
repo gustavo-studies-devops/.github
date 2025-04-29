@@ -1,5 +1,4 @@
 name: Node workflow CI
-description: This workflow is used to a Node.js projects
 
 on:
   workflow_call:
@@ -15,10 +14,6 @@ jobs:
           uses: actions/setup-node@v4
           with:
            node-version: 22.x
-
-        - name: Install application dependecies
-          run: cd src/ && npm install
-          shell: bash
 
         - name: Running the application tests 
           uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
