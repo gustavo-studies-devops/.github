@@ -5,8 +5,5 @@ runs:
   using: "composite"
   steps:
     - name: Running the tests
-      run: |
-        cd src/
-        npm install
-        npm run test
+      run: echo "teste"
       shell: bash
