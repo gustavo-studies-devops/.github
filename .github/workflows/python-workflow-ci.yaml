@@ -1,4 +1,4 @@
-name: Node workflow CI
+name: Python workflow CI
 
 on:
   workflow_call:
@@ -10,10 +10,13 @@ jobs:
         - name: Checkout branch 
           uses: actions/checkout@v4
         
-        - name: Setup node in the host
+        - name: Setup Python in the host
           uses: actions/setup-python@v5
           with:
            python-version: 3.x
+        
+        - name: Install application dependencies
+          run: pip install -r requirements.txt
 
         - name: Running the application tests 
           uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
