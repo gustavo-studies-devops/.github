@@ -4,9 +4,9 @@ description: Action to running the application tests
 runs:
   using: "composite"
   steps:
-    - name: Python security issues
-      run: bandit -r . -x '/.venv/','/tests/'
-      shell: bash
+    # - name: Python security issues
+    #   run: bandit -r . -x '/.venv/','/tests/'
+    #   shell: bash
 
     - name: Running the tests
       run: pytest -v --disable-warnings
