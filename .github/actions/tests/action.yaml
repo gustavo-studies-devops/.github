@@ -4,18 +4,25 @@ description: Action to running the application tests
 runs:
   using: "composite"
   steps:
-    - name: Entering in src directory
-      run: cd src/
-      shell: bash
+    # - name: Entering in src directory
+    #   run: cd src/
+    #   shell: bash
 
-    - name: Install application dependencies
-      run: npm install
-      shell: bash
+    # - name: Install application dependencies
+    #   run: npm install
+    #   shell: bash
 
-    - name: Running application
-      run: npm start
-      shell: bash
+    # - name: Running application
+    #   run: npm start
+    #   shell: bash
 
-    - name: Running integration tests
-      run: npm run test
+    # - name: Running integration tests
+    #   run: npm run test
+    #   shell: bash
+
+    - name: Running the tests
+      run: |
+        cd src/ 
+        npm install
+        npm run test        
       shell: bash
