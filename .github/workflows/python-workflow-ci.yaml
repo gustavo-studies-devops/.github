@@ -20,6 +20,7 @@ jobs:
 
   quality-gate:
     runs-on: ubuntu-latest
+    needs: test
     permissions:
       security-events: write
 
@@ -35,5 +36,5 @@ jobs:
       - name: Code scan
         uses: PyCQA/bandit-action@v1
         with:
-          severity: high
+          severity: all
           exclude: "/tests/"
