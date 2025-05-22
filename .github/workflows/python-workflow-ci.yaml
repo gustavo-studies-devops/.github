@@ -37,4 +37,5 @@ jobs:
         uses: PyCQA/bandit-action@v1
         with:
           severity: all
+          confidence: all
           exclude: "/tests/"
