@@ -1,0 +1,9 @@
+name: Build and push image in docker registry
+description: Action to running the application tests
+
+runs:
+  using: "composite"
+  steps:
+    - name: Say hello
+      run: echo "Hello"
+      shell: bash
