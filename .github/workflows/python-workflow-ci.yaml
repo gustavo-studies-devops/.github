@@ -3,35 +3,38 @@ name: Python workflow CI
 on:
   workflow_call:
 
+permissions:
+  actions: read
+  security-events: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout branch 
-          uses: actions/checkout@v4
-        
-        - name: Setup Python in the host
-          uses: actions/setup-python@v5
-          with:
-           python-version: 3.x
+      - name: Checkout branch
+        uses: actions/checkout@v4
 
-        - name: Running the application tests 
-          uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
-    
+      - name: Setup Python in the host
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Running the application tests
+        uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
+
   quality-gate:
     runs-on: ubuntu-latest
-    needs: test
     steps:
-        - name: Checkout branch 
-          uses: actions/checkout@v4
+      - name: Checkout branch
+        uses: actions/checkout@v4
 
-        - name: Setup Python in the host
-          uses: actions/setup-python@v5
-          with:
-           python-version: 3.x
+      - name: Setup Python in the host
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
 
-        - name: Code scan
-          uses: PyCQA/bandit-action@v1
-          with:
-            severity: high
-            exclude: "/tests/"
+      - name: Code scan
+        uses: PyCQA/bandit-action@v1
+        with:
+          severity: high
+          exclude: "/tests/"
