@@ -1,9 +1,15 @@
 name: Build and push image in docker registry
 description: Action to running the application tests
 
+outputs:
+  tag:
+    description: "Image tag"
+    value: ${{ steps.image-tag.outputs }}
+
 runs:
   using: "composite"
   steps:
-    - name: Say hello
-      run: echo "Hello"
+    - name: Generate image tag
+      id: image-tag
+      run: echo "Hello" >> "$GITHUB_OUTPUT"
       shell: bash
