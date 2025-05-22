@@ -19,11 +19,10 @@ jobs:
         uses: gustavo-studies-devops/github-pipeline/.github/actions/tests@develop
 
   quality-gate:
-    permissions:
-        actions: read
-        security-events: write
-
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
