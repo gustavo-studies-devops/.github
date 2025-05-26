@@ -10,13 +10,7 @@ outputs:
     value: ${{ steps.repo_name.outputs.repo }}
 
 inputs:
-  repository_name:
-    description: ""
-    required: true
   docker_user:
-    description: ""
-    required: true
-  commit_sha:
     description: ""
     required: true
 
@@ -27,15 +21,15 @@ runs:
       id: repo_name
       shell: bash
       run: |
-        REPO_NAME=${{ github.event.inputs.repository_name }}
+        REPO_NAME=${{ github.repository }}
         echo "repo=${REPO_NAME#*/}" >> $GITHUB_OUTPUT
     
     - name: Mounting the image tag
       id: image_tag
       shell: bash
-      run: |
-        TAG=${{ github.event.inputs.commit_sha }}
+      run: | 
+        TAG=${{ github.sha }}
 
-        IMAGE_TAG=${{ github.event.inputs.docker_user }}/${{ steps.repo_name.outputs.repo }}:$TAG
+        IMAGE_TAG="${{ inputs.docker_user }}/${{ steps.repo_name.outputs.repo }}:$TAG"
 
         echo "tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT

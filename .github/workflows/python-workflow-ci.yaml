@@ -42,8 +42,6 @@ jobs:
         id: image_tag
         uses: gustavo-studies-devops/github-pipeline/.github/actions/generate_image_tag@develop
         with:
-          repository_name: ${{ github.repository }}
-          commit_sha: ${{ github.sha }}
           docker_user: ${{ vars.DOCKER_USERNAME }}
 
       - name: Build and push
