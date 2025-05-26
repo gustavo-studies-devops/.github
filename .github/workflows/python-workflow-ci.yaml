@@ -23,7 +23,7 @@ jobs:
     needs: test
 
     outputs:
-        tag: ${{ steps.image_tag.outputs.tag }}
+      tag: ${{ steps.image_tag.outputs.tag }}
 
     steps:
       - name: Checkout branch
@@ -38,16 +38,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build image and push in registry
+      - name: Generate image tag
         id: image_tag
-        uses: gustavo-studies-devops/github-pipeline/.github/actions/build_push@develop
-
-      - name: Echo image tag
-        run: echo "${{ steps.image_tag.outputs.tag }}"
-        shell: bash
+        uses: gustavo-studies-devops/github-pipeline/.github/actions/generate_image_tag@develop
+        with:
+          repository_name: ${{ github.repository }}
+          commit_sha: ${{ github.sha }}
+          docker_user: ${{ vars.DOCKER_USERNAME }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/app:${{ steps.image_tag.outputs.tag }}
+          tags: ${{ steps.image_tag.outputs.tag }}
