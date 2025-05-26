@@ -13,7 +13,7 @@ inputs:
   docker_user:
     description: ""
     required: true
-    default: ${{ vars.DOCKER_USERNAME }}
+
 runs:
   using: "composite"
   steps:
