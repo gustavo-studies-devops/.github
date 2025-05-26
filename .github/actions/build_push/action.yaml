@@ -4,12 +4,12 @@ description: Action to running the application tests
 outputs:
   tag:
     description: "Image tag"
-    value: ${{ steps.image-tag.outputs }}
+    value: ${{ steps.image_tag.outputs.tag }}
 
 runs:
   using: "composite"
   steps:
     - name: Generate image tag
-      id: image-tag
-      run: echo "Hello" >> "$GITHUB_OUTPUT"
+      id: image_tag
+      run: echo "tag=hello" >> "$GITHUB_OUTPUT"
       shell: bash
