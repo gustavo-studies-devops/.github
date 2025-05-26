@@ -11,5 +11,5 @@ runs:
   steps:
     - name: Generate image tag
       id: image_tag
-      run: echo "tag=hello" >> "$GITHUB_OUTPUT"
+      run: echo "tag=hello" >> $GITHUB_OUTPUT
       shell: bash
