@@ -31,7 +31,7 @@ runs:
       id: image_tag
       shell: bash
       run: |
-        TAG=""
+        TAG="latest"
 
         echo "${{inputs.env}}"
 

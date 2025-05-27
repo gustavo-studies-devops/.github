@@ -2,6 +2,10 @@ name: Python workflow CI
 
 on:
   workflow_call:
+    inputs:
+        environment:
+            type: string
+            required: true
 
 jobs:
   test:
@@ -43,7 +47,7 @@ jobs:
         uses: gustavo-studies-devops/github-pipeline/.github/actions/generate_image_tag@develop
         with:
           docker_user: ${{ vars.DOCKER_USERNAME }}
-          env: ${{ vars.environment }}
+          env: ${{ inputs.environment }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
