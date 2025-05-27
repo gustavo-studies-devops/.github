@@ -33,10 +33,12 @@ runs:
       run: |
         TAG=""
 
-        if ${{ inputs.env }} == "dev"; then
-          COMMIT=${{ github.sha }} | cut -c 1-11
+        echo "${{inputs.env}}"
 
-          TAG=dev-$COMMIT
+        if ${{ inputs.env }} == "dev"; then
+          COMMIT=${{ github.sha }}
+
+          TAG=dev-${COMMIT:0:10}
         fi;
 
         IMAGE_TAG="${{ inputs.docker_user }}/${{ steps.repo_name.outputs.repo }}:$TAG"
