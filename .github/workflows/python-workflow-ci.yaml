@@ -43,6 +43,7 @@ jobs:
         uses: gustavo-studies-devops/github-pipeline/.github/actions/generate_image_tag@develop
         with:
           docker_user: ${{ vars.DOCKER_USERNAME }}
+          env: ${{ vars.environment }}
 
       - name: Build and push
         uses: docker/build-push-action@v6

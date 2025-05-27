@@ -13,6 +13,9 @@ inputs:
   docker_user:
     description: ""
     required: true
+  env:
+    description: ""
+    default: dev
 
 runs:
   using: "composite"
@@ -27,8 +30,14 @@ runs:
     - name: Mounting the image tag
       id: image_tag
       shell: bash
-      run: | 
-        TAG=${{ github.sha }}
+      run: |
+        TAG=""
+
+        if ${{ inputs.env }} == "dev"; then
+          COMMIT=${{ github.sha }} | cut -c 1-11
+
+          TAG=dev-$COMMIT
+        fi;
 
         IMAGE_TAG="${{ inputs.docker_user }}/${{ steps.repo_name.outputs.repo }}:$TAG"
 
